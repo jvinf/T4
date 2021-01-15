@@ -1,0 +1,3 @@
+RAIZ_SERVER = "localhost"
+RAIZ_PORT = 1000
+HOST_PORT = 50001
