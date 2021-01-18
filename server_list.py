@@ -5,12 +5,10 @@ class MyServer(rpyc.Service):
     lista_servidores = {}
 
     def on_connect(self, conn):
-        my_addr = socket.gethostbyname(socket.gethostname())
-        print("O endereço ", my_addr,"se conectou a esse servidor")
+        print("Um novo cliente está conectado")
 
     def on_disconnect(self, conn):
-        my_addr = socket.gethostbyname(socket.gethostname())
-        print("O endereço ", my_addr,"se desconectou desse servidor")
+        print("Cliente desconectado")
 
     def exposed_register(self, server_name, server_ip, server_port):
         registrado = True
