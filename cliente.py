@@ -23,7 +23,7 @@ class Cliente:
     
     print("Usando os dados para se conectar no servidor de aplicação")
     time.sleep(2)
-    conn_app = rpyc.connect("localhost", porta) #Usa o endereço IP e porta recebidos para se conectar ao servidor de aplicação
+    conn_app = rpyc.connect(ip, porta) #Usa o endereço IP e porta recebidos para se conectar ao servidor de aplicação
     print("Conexão realizada com sucesso")
     time.sleep(2)
     print("Finalizando cliente...")
