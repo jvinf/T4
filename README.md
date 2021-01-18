@@ -1,4 +1,4 @@
-# Relatorio de funcionamento da tarefa
+# Relatório de funcionamento da tarefa
 
 ## > server_list.py
 
