@@ -1,6 +1,3 @@
-import rpyc
-import socket
-
 class MyServer(rpyc.Service):
     lista_servidores = {}
 
@@ -12,27 +9,8 @@ class MyServer(rpyc.Service):
 
     def exposed_register(self, server_name, server_ip, server_port):
         registrado = True
-
-        if server_name not in self.lista_servidores:
-            self.lista_servidores[server_name] = (server_ip, server_port)
-            print("Foi registrado um novo servidor, seu endereço é ",self.lista_servidores[server_name][0])
-            return registrado
-        else: 
-            for i in self.lista_servidores:
-                if i == server_name:
-                    if self.lista_servidores[i][0] == server_ip and self.lista_servidores[i][1] == server_port: 
-                        print("O Servidor ",server_name, "já se encontra registrado")
-                    else: 
-                        var = input("Os dados do servidor estão inconsistentes, deseja registra-lo novamente? Sim ou Não: ")
-                        if var.capitalize() == 'Sim':
-                            self.exposed_re_register(server_name, server_ip, server_port)
-                            
-                return registrado
-              
+    
     def exposed_lookup(self, server_name):
-        
-        nome = self.exposed_fqn(server_name)
-        print(nome)
         if type(nome) == list:
             if nome[0] in self.lista_servidores:
                 if len(nome) > 1 and type(nome) != str:
@@ -49,9 +27,7 @@ class MyServer(rpyc.Service):
             else:
                 print("O nome digitado não foi encontrado")
                 return False
-
                 
-
                     
                 
     def exposed_re_register(self, server_name, server_ip, server_port):
@@ -69,15 +45,13 @@ class MyServer(rpyc.Service):
             print("Nome não encontrado")
             mensagem = "Nome não encontrado"
             return mensagem
-
+    
     def exposed_retorna_lista(self):
         return self.lista_servidores
-
+    
     def exposed_fqn(self, fqn):
         x = fqn.split(":")
         if type(x) == tuple:
             return x[0], x[1]
         else:
             return x
-
-
